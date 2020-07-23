@@ -41,19 +41,16 @@ class Add extends React.Component{
         return(
             <div>
                 <Input
-                    input={this.state.input}
                     onSubmit={this.onSubmit}
                 >
                     Add
                 </Input>
-                Slider v
                 <Slider 
                     value={this.state.value}
                     min={this.state.min}
                     max={this.state.max}
                     onChange={this.onChange}
                 />
-                Slider ^
             </div>
         );
     }

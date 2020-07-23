@@ -1,5 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'rc-slider/assets/index.css';
 
 import Button from "./components/core/Button";
 // import Btn from "./components/core/Btn"
@@ -61,7 +62,8 @@ class App extends React.Component{
   onClickTabPay = () => {
     this.setState({
       activeTab: 'pay',
-    });
+    })
+    ;
   }
 
 
