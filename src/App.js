@@ -1,8 +1,13 @@
 import React from "react";
-import Button from "./components/core/Button"
-// import Btn from "./components/core/Btn"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Button from "./components/core/Button";
+// import Btn from "./components/core/Btn"
+import Add from "./components/Add";
+import List from "./components/List";
+import Pay from "./components/Pay";
+
+/*
 const Add = (props) => {
   return(
     <div>
@@ -26,15 +31,15 @@ const Pay = (props) => {
     </div>
   );
 };
-
+*/
 
 class App extends React.Component{
 
   constructor(props){
     super(props);
 
-    this.state = {
-      activeTab: 'add',
+    this.state = { //objet javascript
+      activeTab: 'mettre "add" ici après tests OK', // <Add />fonctionnerai mais n'est pas une chose à faire dans React
       items: [],
     };
     //// Bind ici
@@ -46,7 +51,6 @@ class App extends React.Component{
       activeTab: 'add',
     });
   }
-
   
   onClickTabList = () => {
     this.setState({
@@ -54,9 +58,9 @@ class App extends React.Component{
     });
   }
 
-  onClickTabPlay = () => {
+  onClickTabPay = () => {
     this.setState({
-      activeTab: 'play',
+      activeTab: 'pay',
     });
   }
 
@@ -65,18 +69,62 @@ class App extends React.Component{
 
   //// méthodes (par ordre alphabétique / sub-render) - En troisième
 
+  renderTabAdd(){
+    if (this.state.activeTab === 'add') {
+      return (
+        <Add />
+      );
+    }
+    return null;
+  }
+
+  renderTabList(){
+    if (this.state.activeTab === 'list') {
+      return (
+        <List />
+      );
+    }
+    return null;
+  }
+
+  renderTabPay(){
+    if (this.state.activeTab === 'pay') {
+      return(
+        <Pay />
+      );
+    }
+    return null;
+  }
+
   render() {
     return (
-      <div className="btn_group" role="group" aria-label="Tab list">
+      <div className="container">
 
-        <Button >
-          Add {/* children de <button></>*/}
-        </Button>
-          <div>Add</div>
-        <Button>List</Button>
-          <div>List</div>
-        <Button>Pay</Button>
-          <div>Pay</div>
+        <div className="row">
+            <div className="btn_group" role="group" aria-label="Tab list">
+
+              <Button 
+                onClick={this.onClickTabAdd}
+              >
+                Add {/* child"ren" de <button></>*/}
+              </Button>
+              <Button
+                onClick = {this.onClickTabList}
+              >
+                List</Button>
+              <Button 
+                onClick ={this.onClickTabPay}
+              >
+                Pay</Button>
+
+            </div>
+          </div>
+
+          <div className="row">
+            {this.renderTabAdd()}
+            {this.renderTabList()}
+            {this.renderTabPay()}
+          </div>
 
       </div>
     );
