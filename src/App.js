@@ -104,16 +104,16 @@ class App extends React.Component{
             <div className="btn_group" role="group" aria-label="Tab list">
 
               <Button 
-                onClick={this.onClickTabAdd}
+                onClickFunc = {this.onClickTabAdd}
               >
                 Add {/* child"ren" de <button></>*/}
               </Button>
               <Button
-                onClick = {this.onClickTabList}
+                onClickFunc = {this.onClickTabList}
               >
                 List</Button>
               <Button 
-                onClick ={this.onClickTabPay}
+                onClickFunc = {this.onClickTabPay}
               >
                 Pay</Button>
 

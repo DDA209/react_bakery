@@ -1,30 +1,28 @@
 import React from "react";
 import "./Button.css"
 
-
-const Button = ({ children, isSelected, onClick}) => {
+/* troisième tentative après correction*/
+const Button = ({ children, isSelected, onClickFunc}) => {
 
     console.log('component/Button#Button children', children);
-    // console.log('component/Button#Button isSelected', isSelected);
-    console.log('component/Button#Button onClick', onClick);
+    console.log('component/Button#Button isSelected', isSelected);
+    console.log('component/Button#Button onClick', onClickFunc);
 
     return(
         <button
             type="button"
             className="btn btn-primary" 
-            onClick={onClick}
-            // isSelected={isSelected}
-            >
-
+            onClick={onClickFunc}
+            isSelected={isSelected}
+        >
             {children}
-
         </button>
         
     );
 
 }
 
-/*
+/* deuxième tentative - je me mélancge les pinceaux
 class Button extends React.Component{
     render() {
         return(
@@ -42,7 +40,7 @@ class Button extends React.Component{
 }
 */
 
-/*
+/* Première tentative - pas mal finalement
 const Button = (props) => {
 
     return (
