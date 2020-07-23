@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "./components/core/Button"
+// import Btn from "./components/core/Btn"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Add = (props) => {
@@ -40,23 +41,42 @@ class App extends React.Component{
   }
 
   //// Méthodes de React LifeCycle- En premier
+  onClickTabAdd = () => {
+    this.setState({
+      activeTab: 'add',
+    });
+  }
+
   
+  onClickTabList = () => {
+    this.setState({
+      activeTab: 'list',
+    });
+  }
+
+  onClickTabPlay = () => {
+    this.setState({
+      activeTab: 'play',
+    });
+  }
+
+
   //// Event listener (ex : OnClickBloublou OnChange) - En deuxième
 
   //// méthodes (par ordre alphabétique / sub-render) - En troisième
 
   render() {
     return (
-      <div>
+      <div className="btn_group" role="group" aria-label="Tab list">
 
-        <Button
-          Add = {() => {
-            this.state.activeTab
-          }}>
-          Add
+        <Button >
+          Add {/* children de <button></>*/}
         </Button>
+          <div>Add</div>
         <Button>List</Button>
+          <div>List</div>
         <Button>Pay</Button>
+          <div>Pay</div>
 
       </div>
     );

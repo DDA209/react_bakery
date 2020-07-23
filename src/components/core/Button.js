@@ -5,12 +5,13 @@ import "./Button.css"
 class Button extends React.Component{
     render() {
         return(
-            <button
-                onClick = {this.props.Add}
+            <button type="button" className="btn btn-primary" 
+                isSelected={this.props.isSelected}
+                onClick={this.props.onClick}
                 >
+                    
                 {this.props.children}
-                {this.props.isSelected}
-                {this.props.onClick}
+
             </button>
             
         );
