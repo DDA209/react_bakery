@@ -15,7 +15,7 @@ class Slider extends React.Component{
                     onChange={this.props.onChange}
                 />
             </div>
-        )
+        );
     }
 }
 

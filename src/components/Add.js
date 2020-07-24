@@ -13,24 +13,27 @@ class Add extends React.Component{
             min: 1,
             max: 10,
             value: 1,
-            onChange: () => {},
         }
 
 
         ///BIND ICI
-        this.onChange = this.onChange.bind(this);
+        this.onChangeSlider = this.onChangeSlider.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(value){
-        
+    onChangeInput(value){
+        this.setState({
+            value // ou -> value: value 
+        });
+    }
+
+    onChangeSlider(value){
         this.setState({
             value // ou -> value: value 
         });
     }
 
     onSubmit(input){
-
         this.setState({
             input
         });
@@ -38,18 +41,21 @@ class Add extends React.Component{
 
     render(){
         console.log('components/Add#render this.props', this.props);
+        console.log('components/Add#render this.state.input', this.state.input);
+        console.log('components/Add#render this.state.input', this.state.input);
         return(
             <div>
                 <Input
-                    onSubmit={this.onSubmit}
+                    // onChange={this.onChange}
                 >
                     Add
                 </Input>
+
                 <Slider 
                     value={this.state.value}
                     min={this.state.min}
                     max={this.state.max}
-                    onChange={this.onChange}
+                    onChange={this.onChangeSlider}
                 />
             </div>
         );
