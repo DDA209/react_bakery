@@ -12,7 +12,8 @@ class Slider extends React.Component{
                     value={this.props.value}
                     min={this.props.min}
                     max={this.props.max}
-                    onChange={this.props.onChange}
+                    onChange={this.props.onChangeSlider}
+                    onClickFunc={this.props.onClickFunc}
                 />
             </div>
         );

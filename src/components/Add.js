@@ -18,6 +18,7 @@ class Add extends React.Component{
 
         ///BIND ICI
         this.onChangeSlider = this.onChangeSlider.bind(this);
+        this.onChangeSlider = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
@@ -46,7 +47,7 @@ class Add extends React.Component{
         return(
             <div>
                 <Input
-                    // onChange={this.onChange}
+                    onChangeInput={this.onChangeSlider}
                 >
                     Add
                 </Input>
@@ -55,7 +56,7 @@ class Add extends React.Component{
                     value={this.state.value}
                     min={this.state.min}
                     max={this.state.max}
-                    onChange={this.onChangeSlider}
+                    onChangeSlider={this.onChangeSlider}
                 />
             </div>
         );
