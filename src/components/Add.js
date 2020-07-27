@@ -1,9 +1,11 @@
 import React from 'react';
+
 import Slider from "./core/Slider";
 import Input from "./core/Input";
+import Button from "./core/Button";
 
 class Add extends React.Component{
-    
+
     constructor(props){
         super(props);
 
@@ -18,13 +20,14 @@ class Add extends React.Component{
 
         ///BIND ICI
         this.onChangeSlider = this.onChangeSlider.bind(this);
-        this.onChangeSlider = this.onChangeInput.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
     }
 
-    onChangeInput(value){
+    onChangeInput(evt){
         this.setState({
-            value // ou -> value: value 
+            input: evt.target.value
         });
     }
 
@@ -34,24 +37,43 @@ class Add extends React.Component{
         });
     }
 
-    onSubmit(input){
+    onSubmit(value, input){
         this.setState({
+            price: value,
             input
         });
+        console.log('components/core/Add#onSubmit this.state.onSubmit', this.state.onSubmit); // croissant
     }
 
+
     render(){
-        console.log('components/Add#render this.props', this.props);
-        console.log('components/Add#render this.state.input', this.state.input);
-        console.log('components/Add#render this.state.input', this.state.input);
+
+        const add = 'Add';
+
+        console.log('components/Add#render this.state', this.state);
+        console.log('components/Add#render this.onChangeInput', this.onChangeInput);
+        // console.log('components/Add#render this.state.value', this.state.value);
         return(
             <div>
-                <Input
-                    onChangeInput={this.onChangeSlider}
-                >
-                    Add
-                </Input>
+                <div className="input-group mb-3"> {/* Voir pourquoi mb-3*/}
+                    <Input
+                        input={this.state.evt}
+                        onChangeInput={this.onChangeInput}
+                    >
+                        
+                    </Input>
+                  
+                    <div className="input-group-append">
+                        <Button 
+                            onClickFunc={this.onSubmit} // récupérer la valeur de l'input et la redescendre
+                            // onClickFunc={this.props.onChange}
+                        >
 
+                        {add}
+                        </Button>
+                    </div>
+                </div>
+                <span>{this.state.value}€ pour ???</span>
                 <Slider 
                     value={this.state.value}
                     min={this.state.min}

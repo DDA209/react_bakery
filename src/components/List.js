@@ -2,10 +2,12 @@ import React from 'react';
 
 class List extends React.Component{
     render(){
-        console.log('components/list#render this.state', this.state);
+        // console.log('components/list#render this.state', this.state);
         return(
             <div>
-                List
+                <ul>
+                    {/* <li>{this.state.</li> */}
+                </ul>
             </div>
         );
     }

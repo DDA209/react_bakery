@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'rc-slider/assets/index.css';
 
 import Button from "./components/core/Button";
-// import Btn from "./components/core/Btn"
 import Add from "./components/Add";
 import List from "./components/List";
 import Pay from "./components/Pay";
@@ -41,7 +40,9 @@ class App extends React.Component{
 
     this.state = { //objet javascript
       activeTab: 'mettre "add" ici après tests OK', // <Add />fonctionnerai mais n'est pas une chose à faire dans React
+      input: '',
       items: [],
+      price: 0,
     };
     //// Bind ici
   }
@@ -70,6 +71,13 @@ class App extends React.Component{
   //// Event listener (ex : OnClickBloublou OnChange) - En deuxième
 
   //// méthodes (par ordre alphabétique / sub-render) - En troisième
+
+  onAdd(price, input){
+    this.setState({
+      price,
+      input,
+    })
+  }
 
   renderTabAdd(){
     if (this.state.activeTab === 'add') {

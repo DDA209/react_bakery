@@ -4,9 +4,9 @@ import "./Button.css"
 /* troisième tentative après correction*/
 const Button = ({ children, isSelected, onClickFunc}) => {
 
-    console.log('component/Button#Button children', children);
-    console.log('component/Button#Button isSelected', isSelected);
-    console.log('component/Button#Button onClick', onClickFunc);
+    // console.log('component/Button#Button children', children);
+    // console.log('component/Button#Button isSelected', isSelected);
+    // console.log('component/Button#Button onClick', onClickFunc);
 
     return(
         <button
