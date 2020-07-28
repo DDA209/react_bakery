@@ -17,7 +17,6 @@ class Add extends React.Component{
             value: 1,
         }
 
-
         ///BIND ICI
         this.onChangeSlider = this.onChangeSlider.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
@@ -25,42 +24,43 @@ class Add extends React.Component{
 
     }
 
-    onChangeInput(evt){
+    onChangeInput(evt){ // valeur de l'input
         this.setState({
             input: evt.target.value
         });
     }
 
-    onChangeSlider(value){
+    onChangeSlider(value){ // Valeur du slider
         this.setState({
             value // ou -> value: value 
         });
     }
 
-    onSubmit(value, input){
+    onSubmit(price, input){
         this.setState({
-            price: value,
+            price,
             input
         });
-        console.log('components/core/Add#onSubmit this.state.onSubmit', this.state.onSubmit); // croissant
-    }
-
+        console.log('components/core/Add#onSubmit this.state', this.state);
+        }
 
     render(){
 
         const add = 'Add';
 
-        console.log('components/Add#render this.state', this.state);
-        console.log('components/Add#render this.onChangeInput', this.onChangeInput);
+        // console.log('components/Add#render this.state', this.state);
+        // console.log('components/Add#render this.onChangeInput', this.onChangeInput);
         // console.log('components/Add#render this.state.value', this.state.value);
+        // console.log('components/core/Add#render this.state.onSubmit.price', this.state.onSubmit.price);
+        // console.log('components/core/Add#render this.state.onSubmit.input', this.state.onSubmit.input);
+
         return(
             <div>
                 <div className="input-group mb-3"> {/* Voir pourquoi mb-3*/}
                     <Input
-                        input={this.state.evt}
+                        input={this.state.input}
                         onChangeInput={this.onChangeInput}
                     >
-                        
                     </Input>
                   
                     <div className="input-group-append">
@@ -73,16 +73,17 @@ class Add extends React.Component{
                         </Button>
                     </div>
                 </div>
-                <span>{this.state.value}€ pour ???</span>
+                <span>{this.state.value}€ pour {this.state.input}</span>
                 <Slider 
                     value={this.state.value}
                     min={this.state.min}
                     max={this.state.max}
                     onChangeSlider={this.onChangeSlider}
                 />
+                {/* <p>{this.state.onSubmit.price}€ - {this.state.onSubmit.input}</p> */}
             </div>
         );
     }
 }
-
+// 
 export default Add;

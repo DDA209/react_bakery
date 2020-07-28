@@ -9,7 +9,7 @@ class Input extends React.Component{
     //     };
 
     //     //bind
-    //     this.inputGetchange = this.inputGetchange.bind(this);
+    //     this.inputGetchange = this.inputGetchange.binksd(this);
     // }
 
     // inputGetchange(evt) {
@@ -20,7 +20,7 @@ class Input extends React.Component{
     // }
 
     render(){
-        console.log('components/core/input#render this', this); //{props: {…}, context: {…}, refs: {…}, updater: {…}, state: {…}, …}
+        // console.log('components/core/input#render this', this); //{props: {…}, context: {…}, refs: {…}, updater: {…}, state: {…}, …}
         // console.log('components/core/input#render this.state', this.state);//{value: "croissant"}
         // console.log('components/core/input#render this.state', this.state.value);
         // console.log('components/core/input#render this.props.onChangeInput', this.props.onChangeInput);
@@ -34,7 +34,7 @@ class Input extends React.Component{
                     className="form-control" 
                     placeholder="Item" 
                     aria-label="add" 
-                    aria-describedby="add-button"
+                    // aria-describedby="add-button" inutile dans le composant réutilisable
                     value={this.props.input}
                     onChange={this.props.onChangeInput}
                 />

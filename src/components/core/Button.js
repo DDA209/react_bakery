@@ -1,28 +1,37 @@
 import React from "react";
 import "./Button.css"
 
-/* troisième tentative après correction*/
-const Button = ({ children, isSelected, onClickFunc}) => {
+/* troisième tentative après correction : En fonction component */
+const Button = ({ children, isSelected, onClickFunc }) => { //destructuration du this.props
 
     // console.log('component/Button#Button children', children);
     // console.log('component/Button#Button isSelected', isSelected);
     // console.log('component/Button#Button onClick', onClickFunc);
 
+    let btnClass = 'btn-primary';
+    if (isSelected){
+        btnClass='btn-primary'
+    }
+    else {
+        btnClass='btn-outline-primary'
+    }
+
+    //isSelected={isSelected}
+
     return(
+
         <button
             type="button"
-            className="btn btn-primary" 
+            className={'btn ' + btnClass} 
             onClick={onClickFunc}
-            isSelected={isSelected}
         >
             {children}
         </button>
-        
-    );
 
+    );
 }
 
-/* deuxième tentative - je me mélancge les pinceaux
+/* deuxième tentative
 class Button extends React.Component{
     render() {
         return(

@@ -67,6 +67,9 @@ class App extends React.Component{
     ;
   }
 
+  isSelectedFunc(){
+    
+  }
 
   //// Event listener (ex : OnClickBloublou OnChange) - En deuxième
 
@@ -79,34 +82,43 @@ class App extends React.Component{
     })
   }
 
-  renderTabAdd(){
-    if (this.state.activeTab === 'add') {
-      return (
-        <Add />
-      );
+  renderTabDefault(){
+    if (this.state.activeTab !== 'list' && this.state.activeTab !== 'add' && this.state.activeTab !== 'pay') { // Meilleure façon de faire !==
+      return <div className="row"><h1>Welcome!</h1></div>;
     }
     return null;
   }
 
-  renderTabList(){
-    if (this.state.activeTab === 'list') {
-      return (
-        <List />
-      );
+
+  renderTabAdd(){
+    if (this.state.activeTab === 'add') { // Bon mais pourrait être mieux
+      return <Add onSubmitPriceAndInput={null}/>;
     }
     return null;
+  }
+
+  /*
+  renderTabList(){
+    if (this.state.activeTab !== 'list') { // Meilleure façon de faire !==
+      return null;
+    }
+    return <List />;
   }
 
   renderTabPay(){
-    if (this.state.activeTab === 'pay') {
-      return(
-        <Pay />
-      );
+    if (this.state.activeTab !== 'pay') {
+      return null;
     }
-    return null;
+    return <Pay />;
   }
+  */
+
+
+
 
   render() {
+    // console.log('app#render this.state.activeTab',this.state.activeTab);
+    console.log('app#render this.state.activeTab',this.state.activeTab === "pay");
     return (
       <div className="container">
 
@@ -115,15 +127,18 @@ class App extends React.Component{
 
               <Button 
                 onClickFunc = {this.onClickTabAdd}
+                isSelected = {this.state.activeTab === "add" ? true : false}
               >
                 Add {/* child"ren" de <button></>*/}
               </Button>
               <Button
                 onClickFunc = {this.onClickTabList}
+                isSelected = {this.state.activeTab === "list" ? true : false}
               >
                 List</Button>
               <Button 
                 onClickFunc = {this.onClickTabPay}
+                isSelected = {this.state.activeTab === "pay" ? true : false}
               >
                 Pay</Button>
 
@@ -131,9 +146,14 @@ class App extends React.Component{
           </div>
 
           <div className="row">
+
+            {this.renderTabDefault()}
             {this.renderTabAdd()}
-            {this.renderTabList()}
-            {this.renderTabPay()}
+            {/* {this.renderTabList()} */}
+            {this.state.activeTab === 'list' ? <List /> : null} {/* autre façon */}
+            {/* {this.renderTabPay()} */}
+            {this.state.activeTab === 'pay' && <Pay />} {/* autre façon */}
+            
           </div>
 
       </div>
