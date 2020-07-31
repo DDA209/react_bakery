@@ -7,6 +7,7 @@ import Add from "./components/Add";
 import List from "./components/List";
 import Pay from "./components/Pay";
 
+
 /*
 const Add = (props) => {
   return(
@@ -40,11 +41,13 @@ class App extends React.Component{
 
     this.state = { //objet javascript
       activeTab: 'mettre "add" ici après tests OK', // <Add />fonctionnerai mais n'est pas une chose à faire dans React
-      input: '',
-      items: [],
-      price: 0,
+      items: [{
+        input: 'rien',
+        price: 0,
+      }],
     };
     //// Bind ici
+    this.onAdd = this.onAdd.bind(this);
   }
 
   //// Méthodes de React LifeCycle- En premier
@@ -63,26 +66,37 @@ class App extends React.Component{
   onClickTabPay = () => {
     this.setState({
       activeTab: 'pay',
-    })
+    });
     ;
   }
 
-  isSelectedFunc(){
+  // isSelectedFunc(){
     
-  }
+  // }
 
   //// Event listener (ex : OnClickBloublou OnChange) - En deuxième
 
   //// méthodes (par ordre alphabétique / sub-render) - En troisième
 
-  onAdd(price, input){
-    this.setState({
-      price,
-      input,
-    })
+  onAdd(price, input) {
+
+    // console.log('App#onAdd this.state.price', this.state.price)
+    // console.log('App#onAdd price', price)
+    // console.log('App#onAdd this.state.input', this.state.input)
+    // console.log('App#onAdd input', input)
+
+    const item = {input, price};
+    const items = this.state.items;
+
+    items.push(item);
+
+    console.log('App#onAdd items', items);
+    console.log('App#onAdd item', item);
+    console.log('App#onAdd this.state.items', this.state.items);
+
   }
 
-  renderTabDefault(){
+  renderTabDefault() {
     if (this.state.activeTab !== 'list' && this.state.activeTab !== 'add' && this.state.activeTab !== 'pay') { // Meilleure façon de faire !==
       return <div className="row"><h1>Welcome!</h1></div>;
     }
@@ -90,9 +104,9 @@ class App extends React.Component{
   }
 
 
-  renderTabAdd(){
+  renderTabAdd() {
     if (this.state.activeTab === 'add') { // Bon mais pourrait être mieux
-      return <Add onSubmitPriceAndInput={null}/>;
+      return <Add onSubmit={this.onAdd}/>;
     }
     return null;
   }
@@ -150,7 +164,9 @@ class App extends React.Component{
             {this.renderTabDefault()}
             {this.renderTabAdd()}
             {/* {this.renderTabList()} */}
-            {this.state.activeTab === 'list' ? <List /> : null} {/* autre façon */}
+            {this.state.activeTab === 'list' ? <List 
+              
+            /> : null} {/* autre façon */}
             {/* {this.renderTabPay()} */}
             {this.state.activeTab === 'pay' && <Pay />} {/* autre façon */}
             

@@ -4,6 +4,9 @@ import Slider from "./core/Slider";
 import Input from "./core/Input";
 import Button from "./core/Button";
 
+const min = 1;
+const max = 10;
+
 class Add extends React.Component{
 
     constructor(props){
@@ -12,9 +15,6 @@ class Add extends React.Component{
         this.state = {
             input:'',
             price: 1,
-            min: 1,
-            max: 10,
-            value: 1,
         }
 
         ///BIND ICI
@@ -24,31 +24,43 @@ class Add extends React.Component{
 
     }
 
-    onChangeInput(evt){ // valeur de l'input
+    onChangeInput(evt) { // valeur de l'input
         this.setState({
             input: evt.target.value
         });
+        // console.log('components/core/Add#onChangeInput this.state', this.state);
+
     }
 
-    onChangeSlider(value){ // Valeur du slider
+    onChangeSlider(price) { // Valeur du slider
         this.setState({
-            value // ou -> value: value 
+            price // ou -> price: price 
         });
     }
 
-    onSubmit(price, input){
-        this.setState({
-            price,
-            input
-        });
-        console.log('components/core/Add#onSubmit this.state', this.state);
-        }
+    onSubmit() {
 
-    render(){
+        // console.log('components/core/Add#onSubmit this.state', this.state);
+        // console.log('components/core/Add#onSubmit typeof  this.state.input', typeof this.state.input);
+        // console.log('components/core/Add#onSubmit this.state.input', this.state.input);
+        // console.log('components/core/Add#onSubmit this.state', this.state);
+        // console.log('components/core/Add#onSubmit typeOf this.state.price', typeof this.state.price);
+        // console.log('components/core/Add#onSubmit this.state.price', this.state.price);
+        
+        const price = this.state.price;
+        const input = this.state.input;
+        
+        console.log('components/core/Add#onSubmit price, input', price, input);
+        this.props.onSubmit(price, input);
+    }
+
+    render() {
 
         const add = 'Add';
 
         // console.log('components/Add#render this.state', this.state);
+        // console.log('components/Add#render this.state.price', this.state.price);
+        // console.log('components/Add#render this.state.input', this.state.input);
         // console.log('components/Add#render this.onChangeInput', this.onChangeInput);
         // console.log('components/Add#render this.state.value', this.state.value);
         // console.log('components/core/Add#render this.state.onSubmit.price', this.state.onSubmit.price);
@@ -58,7 +70,7 @@ class Add extends React.Component{
             <div>
                 <div className="input-group mb-3"> {/* Voir pourquoi mb-3*/}
                     <Input
-                        input={this.state.input}
+                        // input={this.state.input} // change la place du curseur du slider
                         onChangeInput={this.onChangeInput}
                     >
                     </Input>
@@ -73,11 +85,11 @@ class Add extends React.Component{
                         </Button>
                     </div>
                 </div>
-                <span>{this.state.value}€ pour {this.state.input}</span>
+                <span>{this.state.price}€ pour {this.state.input}</span>
                 <Slider 
-                    value={this.state.value}
-                    min={this.state.min}
-                    max={this.state.max}
+                    value={this.state.price}
+                    min={min}
+                    max={max}
                     onChangeSlider={this.onChangeSlider}
                 />
                 {/* <p>{this.state.onSubmit.price}€ - {this.state.onSubmit.input}</p> */}
